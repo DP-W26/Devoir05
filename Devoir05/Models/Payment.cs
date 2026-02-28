@@ -6,7 +6,7 @@ namespace Devoir05.Models
     public class Payment
     {
         public decimal Amount { get; }
-        private IPaymentStrategy _strategy;
+        private IPaymentStrategy? _strategy;
         private IPaymentState _state;
         private readonly List<IPaymentObserver> _observers = new();
 
@@ -40,6 +40,6 @@ namespace Devoir05.Models
         }
 
         public bool ExecutePayment()
-            => _strategy.Pay(Amount);
+            => _strategy?.Pay(Amount) ?? false; // If no strategy is set, return false (payment failed)
     }
 }
