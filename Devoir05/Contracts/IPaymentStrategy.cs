@@ -1,0 +1,7 @@
+﻿namespace Devoir05.Contracts
+{
+    public interface IPaymentStrategy
+    {
+        bool Pay(decimal amount);
+    }
+}
